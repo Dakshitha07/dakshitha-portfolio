@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dakshitha Pathipati, Graphic Designer and Creative Content Designer</title>
+<meta name="description" content="Portfolio of Dakshitha Pathipati, a graphic designer and creative content designer working on social media, event branding, posters, editorial and marketing design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/htm@3.1.1/dist/htm.umd.js"></script>
+<style>
+:root{--bg:#ECEAE5;--fg:#141414;--mute:#77756F;--line:#CFCCC4;--acc:#B4552D;--card:#E2DFD8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121211;--fg:#ECEAE5;--mute:#8F8D86;--line:#33322F;--acc:#D2784F;--card:#1C1C1A;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121211;--fg:#ECEAE5;--mute:#8F8D86;--line:#33322F;--acc:#D2784F;--card:#1C1C1A;color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui,sans-serif;margin:0;-webkit-font-smoothing:antialiased}
+.disp{font-family:Anton,Impact,'Arial Narrow',sans-serif;text-transform:uppercase;line-height:.88;letter-spacing:.005em}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.tile{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.card:hover .tile{transform:scale(1.04)}
+.card .ov{opacity:0;transition:opacity .35s}.card:hover .ov{opacity:1}
+.lnk{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .3s}.lnk:hover{background-size:100% 1px}
+.hbar{position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+.mq{overflow:hidden}.mq-track{display:flex;width:max-content;animation:mq 80s linear infinite}.mq:hover .mq-track{animation-play-state:paused}
+.mq-item{flex:none;width:clamp(240px,26vw,420px);margin-right:20px;text-align:left}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.mq{overflow-x:auto}.mq-track{animation:none}}
+</style>
+</head>
+<body>
+<div class="hbar"></div>
+<div id="root"></div>
+<script>
+const { useState, useEffect, useRef, useCallback } = React;
+const html = htm.bind(React.createElement);
+
+/* ============ EDIT ME: all your content lives here ============ */
+const SITE = {
+  email: "dakshithapathipati@gmail.com",
+  phone: "9494452711",
+  linkedin: "https://www.linkedin.com/in/dakshithapathipati0729/",
+  instagram: "https://www.instagram.com/dakshiiiiiiiii",
+};
+// To add a design: add { title, img } here (img can be a file path like "images/poster.jpg" or any URL).
+const PORTRAIT = "images/portrait.jpg";
+const PROJECTS = [{"title": "Indian Thali", "img": "images/work/design-01.jpg"}, {"title": "Porsche", "img": "images/work/design-02.jpg"}, {"title": "Day 6", "img": "images/work/design-03.jpg"}, {"title": "Non Veg Thali", "img": "images/work/design-04.jpg"}, {"title": "Fashion", "img": "images/work/design-05.jpg"}, {"title": "I Am Feminine", "img": "images/work/design-06.jpg"}, {"title": "Fresh Orange", "img": "images/work/design-07.jpg"}, {"title": "Opus Skies", "img": "images/work/design-08.jpg"}, {"title": "Badminton Tournament", "img": "images/work/design-09.jpg"}, {"title": "Open Mic", "img": "images/work/design-10.jpg"}, {"title": "Startup Club Meetup", "img": "images/work/design-11.jpg"}, {"title": "Business Casestudy", "img": "images/work/design-12.jpg"}, {"title": "Cricket Match", "img": "images/work/design-13.jpg"}, {"title": "Suraj Pawar Live", "img": "images/work/design-14.jpg"}, {"title": "Likhith Live", "img": "images/work/design-15.jpg"}, {"title": "Matcha Cafe", "img": "images/work/design-16.jpg"}, {"title": "Live Music", "img": "images/work/design-17.jpg"}, {"title": "Jager Offer", "img": "images/work/design-18.jpg"}, {"title": "Live Music Mohan", "img": "images/work/design-19.jpg"}, {"title": "Ayudha Pooja", "img": "images/work/design-20.jpg"}, {"title": "Dry Days", "img": "images/work/design-21.jpg"}, {"title": "Live Swarag", "img": "images/work/design-22.jpg"}, {"title": "October Recap", "img": "images/work/design-23.jpg"}, {"title": "Midweek DJ Night", "img": "images/work/design-24.jpg"}, {"title": "Friday Night Live", "img": "images/work/design-25.jpg"}, {"title": "Halloween DJ Eve", "img": "images/work/design-26.jpg"}, {"title": "Kannada Rajyotsava", "img": "images/work/design-27.jpg"}, {"title": "Jugalbandhi", "img": "images/work/design-28.jpg"}];
+// To add a PDF: add { title, note, href } here, for example { title:"Conference Book", note:"ICDEMI 2025", href:"docs/book.pdf" }.
+const DOCS = [{"title": "ICDEMI 2025 Conference", "pages": ["images/documents/icdemi-2025-conference/page-01.jpg", "images/documents/icdemi-2025-conference/page-02.jpg", "images/documents/icdemi-2025-conference/page-03.jpg", "images/documents/icdemi-2025-conference/page-04.jpg", "images/documents/icdemi-2025-conference/page-05.jpg", "images/documents/icdemi-2025-conference/page-06.jpg", "images/documents/icdemi-2025-conference/page-07.jpg", "images/documents/icdemi-2025-conference/page-08.jpg", "images/documents/icdemi-2025-conference/page-09.jpg", "images/documents/icdemi-2025-conference/page-10.jpg", "images/documents/icdemi-2025-conference/page-11.jpg", "images/documents/icdemi-2025-conference/page-12.jpg", "images/documents/icdemi-2025-conference/page-13.jpg", "images/documents/icdemi-2025-conference/page-14.jpg", "images/documents/icdemi-2025-conference/page-15.jpg", "images/documents/icdemi-2025-conference/page-16.jpg", "images/documents/icdemi-2025-conference/page-17.jpg", "images/documents/icdemi-2025-conference/page-18.jpg", "images/documents/icdemi-2025-conference/page-19.jpg", "images/documents/icdemi-2025-conference/page-20.jpg", "images/documents/icdemi-2025-conference/page-21.jpg", "images/documents/icdemi-2025-conference/page-22.jpg"]}, {"title": "IEEE WIE and IEEE CS Magazine 2026", "pages": ["images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-01.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-02.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-03.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-04.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-05.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-06.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-07.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-08.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-09.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-10.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-11.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-12.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-13.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-14.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-15.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-16.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-17.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-18.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-19.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-20.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-21.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-22.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-23.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-24.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-25.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-26.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-27.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-28.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-29.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-30.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-31.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-32.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-33.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-34.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-35.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-36.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-37.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-38.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-39.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-40.jpg", "images/documents/ieee-wie-and-ieee-cs-magazine-2026/page-41.jpg"]}, {"title": "IMC Movie Club", "pages": ["images/documents/imc-movie-club/page-01.jpg", "images/documents/imc-movie-club/page-02.jpg", "images/documents/imc-movie-club/page-03.jpg", "images/documents/imc-movie-club/page-04.jpg", "images/documents/imc-movie-club/page-05.jpg", "images/documents/imc-movie-club/page-06.jpg", "images/documents/imc-movie-club/page-07.jpg", "images/documents/imc-movie-club/page-08.jpg", "images/documents/imc-movie-club/page-09.jpg"]}, {"title": "IMC Weekend Calendar", "pages": ["images/documents/imc-weekend-calendar/page-01.jpg", "images/documents/imc-weekend-calendar/page-02.jpg", "images/documents/imc-weekend-calendar/page-03.jpg", "images/documents/imc-weekend-calendar/page-04.jpg", "images/documents/imc-weekend-calendar/page-05.jpg", "images/documents/imc-weekend-calendar/page-06.jpg", "images/documents/imc-weekend-calendar/page-07.jpg", "images/documents/imc-weekend-calendar/page-08.jpg", "images/documents/imc-weekend-calendar/page-09.jpg", "images/documents/imc-weekend-calendar/page-10.jpg", "images/documents/imc-weekend-calendar/page-11.jpg", "images/documents/imc-weekend-calendar/page-12.jpg", "images/documents/imc-weekend-calendar/page-13.jpg", "images/documents/imc-weekend-calendar/page-14.jpg", "images/documents/imc-weekend-calendar/page-15.jpg"]}, {"title": "IMC Weekend Recap", "pages": ["images/documents/imc-weekend-recap/page-01.jpg", "images/documents/imc-weekend-recap/page-02.jpg", "images/documents/imc-weekend-recap/page-03.jpg", "images/documents/imc-weekend-recap/page-04.jpg", "images/documents/imc-weekend-recap/page-05.jpg", "images/documents/imc-weekend-recap/page-06.jpg", "images/documents/imc-weekend-recap/page-07.jpg", "images/documents/imc-weekend-recap/page-08.jpg", "images/documents/imc-weekend-recap/page-09.jpg", "images/documents/imc-weekend-recap/page-10.jpg", "images/documents/imc-weekend-recap/page-11.jpg", "images/documents/imc-weekend-recap/page-12.jpg", "images/documents/imc-weekend-recap/page-13.jpg"]}, {"title": "IMC Weekend Spotlight", "pages": ["images/documents/imc-weekend-spotlight/page-01.jpg", "images/documents/imc-weekend-spotlight/page-02.jpg", "images/documents/imc-weekend-spotlight/page-03.jpg", "images/documents/imc-weekend-spotlight/page-04.jpg", "images/documents/imc-weekend-spotlight/page-05.jpg", "images/documents/imc-weekend-spotlight/page-06.jpg"]}];
+const EXPERIENCE = [
+  {org:"Freelance",role:"Graphic Designer",when:"Open for projects",text:"Creating posters, social media creatives and promotional designs for brands and events."},
+  {org:"ICDEMI 2025 Conference, GITAM Bengaluru",role:"Creative Visual Designer",when:"Oct to Nov 2025",text:"Designed conference banners, the proceedings book, certificates and the overall event visual identity."},
+  {org:"IMC Tirupati",role:"Social Media Manager",when:"Aug to Sep 2025",text:"Worked on social media creatives and Instagram content management."},
+];
+const TOOLS = [
+  {name:"Canva",note:"Layouts, social, print",confirmed:true},
+  {name:"AI Creative Tools",note:"Ideation and image exploration",confirmed:true},
+];
+const SERVICES = ["Social Media Design","Poster Design","Event Creatives","Branding & Visual Identity","Marketing Materials","Content Design"];
+const ICONS = {
+  arrow:["M7 7h10v10","M7 17 17 7"], x:["M18 6 6 18","M6 6l12 12"],
+  left:["m15 18-6-6 6-6"], right:["m9 18 6-6-6-6"],
+  phone:["M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"],
+  mail:["M4 5h16v14H4z","m4 7 8 6 8-6"],
+  linkedin:["M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z","M2 9h4v12H2z","M4 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"],
+  instagram:["M3 7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z","M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z","M17.5 6.5h.01"],
+};
+const Icon = ({n,s=18}) => html`<svg width=${s} height=${s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">${ICONS[n].map((d,i)=>html`<path key=${i} d=${d}/>`)}</svg>`;
+
+function Reveal({children,className="",delay=0,as="div"}){
+  const ref=useRef(null);
+  useEffect(()=>{const el=ref.current;if(!el)return;
+    const io=new IntersectionObserver(([e])=>{if(e.isIntersecting){el.classList.add("in");io.disconnect()}},{threshold:.12});
+    io.observe(el);return()=>io.disconnect()},[]);
+  return React.createElement(as,{ref,className:"rv "+className,style:{transitionDelay:delay+"ms"}},children);
+}
+
+const Art = ({p,className="",label=true}) => p.img
+  ? html`<img src=${p.img} alt=${p.title} loading="lazy" decoding="async" className=${"w-full h-full object-cover "+className}/>`
+  : html`<div className=${"w-full h-full relative flex flex-col justify-between p-4 "+className} style=${{background:p.tone,color:["#2A2A2A","#B4552D","#5E6B63"].includes(p.tone)?"#ECEAE5":"#141414"}}>
+      <span className="text-[10px] tracking-[.2em] uppercase opacity-70">Your design here</span>
+      <span className="disp text-3xl md:text-4xl opacity-30">${p.title}</span>
+    </div>`;
+
+function Nav(){
+  const [open,setOpen]=useState(false);
+  const links=[["about","About"],["work","Work"],["documents","Documents"],["experience","Experience"],["services","Services"],["contact","Contact"]];
+  return html`<header className="fixed left-0 right-0 z-50" style=${{top:"env(safe-area-inset-top,0px)",background:"color-mix(in srgb,var(--bg) 88%,transparent)",backdropFilter:"blur(10px)"}}>
+    <div className="max-w-[1400px] mx-auto px-5 md:px-10 h-14 flex items-center justify-between">
+      <a href="#top" className="disp text-xl">DP<span style=${{color:"var(--acc)"}}>.</span></a>
+      <nav className="hidden md:flex gap-8 text-sm">${links.map(([id,l])=>html`<a key=${id} href=${"#"+id} className="lnk">${l}</a>`)}</nav>
+      <button className="md:hidden text-sm uppercase tracking-widest" onClick=${()=>setOpen(!open)} aria-expanded=${open}>${open?"Close":"Menu"}</button>
+    </div>
+    ${open&&html`<div className="md:hidden px-5 pb-5 flex flex-col gap-3 text-2xl disp" style=${{background:"var(--bg)"}}>${links.map(([id,l])=>html`<a key=${id} href=${"#"+id} onClick=${()=>setOpen(false)}>${l}</a>`)}</div>`}
+  </header>`;
+}
+
+function Hero(){
+  return html`<section id="top" className="min-h-[100svh] pt-24 pb-10 px-5 md:px-10 max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-8 items-end">
+    <div className="lg:col-span-12">
+      <p className="text-xs tracking-[.25em] uppercase mb-6" style=${{color:"var(--mute)"}}>Portfolio 2026</p>
+      <h1 className="disp" style=${{fontSize:"clamp(4rem,15vw,12.5rem)"}}>Dakshitha<br/><span style=${{color:"var(--acc)"}}>Pathipati</span></h1>
+      <p className="mt-8 text-lg md:text-xl font-medium">Graphic Designer & Creative Content Designer</p>
+      <p className="mt-2 italic" style=${{color:"var(--mute)"}}>“Turning ideas into visuals, one design at a time.”</p>
+      <p className="mt-6 max-w-md text-sm leading-relaxed" style=${{color:"var(--mute)"}}>I design social creatives, posters, event identities and print pieces, with a soft spot for typography and bold, clear ideas.</p>
+      <div className="mt-8 flex flex-wrap gap-3">
+        <a href="#work" className="px-6 py-3 text-sm rounded-full transition hover:opacity-80" style=${{background:"var(--fg)",color:"var(--bg)"}}>View My Work</a>
+        <a href="#contact" className="px-6 py-3 text-sm rounded-full border transition hover:bg-[var(--fg)] hover:text-[var(--bg)]" style=${{borderColor:"var(--fg)"}}>Let's Connect</a>
+      </div>
+    </div>
+  </section>`;
+}
+
+function About(){
+  return html`<section id="about" className="px-5 md:px-10 py-24 md:py-36 max-w-[1400px] mx-auto grid md:grid-cols-12 gap-10">
+    <${Reveal} className="md:col-span-4"><img src=${PORTRAIT} alt="Portrait of Dakshitha Pathipati" className="w-full aspect-[4/5] object-cover" style=${{objectPosition:"50% 62%"}}/><//>
+    <${Reveal} className="md:col-span-8 md:pl-10" delay=${100}>
+      <h2 className="disp" style=${{fontSize:"clamp(2.5rem,7vw,6rem)"}}>A little <span style=${{color:"var(--acc)"}}>about</span> me.</h2>
+      <div className="mt-8 grid md:grid-cols-2 gap-6 text-[15px] leading-relaxed" style=${{color:"var(--mute)"}}>
+        <p>I'm a freelance graphic designer who loves visual storytelling. I play with typography, colour and layout until an idea says exactly what it should.</p>
+        <p>I've worked on social media creatives, promotional posters, event branding, marketing material, banners and magazines. I enjoy trying different styles and turning rough concepts into finished visuals, and I'm always learning and experimenting.</p>
+      </div>
+      <p className="mt-8 text-sm">Based in India</p>
+    <//>
+  </section>`;
+}
+
+function Work({onOpen}){
+  const loop=[...PROJECTS,...PROJECTS];
+  return html`<section id="work" className="py-20">
+    <div className="px-5 md:px-10 max-w-[1400px] mx-auto mb-10"><${Reveal}>
+      <h2 className="disp" style=${{fontSize:"clamp(3rem,10vw,8.5rem)"}}>Work</h2>
+      <p className="mt-4 text-sm" style=${{color:"var(--mute)"}}>Hover to pause. Click any design to view it full screen.</p><//></div>
+    <div className="mq"><div className="mq-track">
+      ${loop.map((p,i)=>html`<button key=${i} className="mq-item card" onClick=${()=>onOpen(i%PROJECTS.length)} aria-label=${"Open "+p.title}>
+        <div className="relative overflow-hidden" style=${{aspectRatio:"4/5"}}>
+          <img src=${p.img} alt=${p.title} loading="lazy" decoding="async" className="tile w-full h-full object-cover"/>
+          <div className="ov absolute inset-0 flex items-end justify-between p-4 text-white" style=${{background:"linear-gradient(transparent 50%,rgba(0,0,0,.6))"}}><span className="text-sm">View</span><${Icon} n="arrow"/></div>
+        </div>
+      </button>`)}
+    </div></div>
+  </section>`;
+}
+
+function Docs(){
+  const [open,setOpen]=useState(0);
+  const [idx,setIdx]=useState(null);
+  const d=DOCS[open];
+  const list=d?d.pages.map(img=>({title:d.title,img})):[];
+  return html`<section id="documents" className="px-5 md:px-10 py-20 max-w-[1400px] mx-auto">
+    <${Reveal}><h2 className="disp mb-10" style=${{fontSize:"clamp(2.5rem,7vw,6rem)"}}>Docu<span style=${{color:"var(--acc)"}}>ments</span></h2><//>
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">${DOCS.map((x,i)=>html`<${Reveal} key=${x.title} delay=${(i%3)*80}>
+      <button className="group block w-full text-left" aria-label=${"Open "+x.title} onClick=${()=>{setOpen(i);setIdx(0)}}>
+        <div className="aspect-[4/5] overflow-hidden border" style=${{borderColor:"var(--line)",background:"var(--card)"}}><img src=${x.pages[0]} alt=${x.title} loading="lazy" decoding="async" className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"/></div>
+        <div className="pt-3 flex justify-between gap-3 text-sm"><span className="font-medium transition-colors group-hover:text-[var(--acc)]">${x.title}</span><span style=${{color:"var(--mute)"}}>${x.pages.length} pages</span></div>
+      </button><//>`)}</div>
+    ${idx!==null&&d&&html`<${Lightbox} list=${list} idx=${idx} setIdx=${setIdx} label="Document"/>`}
+  </section>`;
+}
+
+function Lightbox({list,idx,setIdx,label,hideTitle}){
+  const p=list[idx];
+  const close=useCallback(()=>setIdx(null),[]);
+  const go=useCallback(d=>setIdx(i=>(i+d+list.length)%list.length),[list.length]);
+  useEffect(()=>{
+    const k=e=>{if(e.key==="Escape")close();if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)};
+    addEventListener("keydown",k);document.body.style.overflow="hidden";
+    return()=>{removeEventListener("keydown",k);document.body.style.overflow=""}},[close,go]);
+  const btn="p-3 rounded-full border shrink-0";
+  return html`<div role="dialog" aria-modal="true" aria-label=${p.title} className="fixed inset-0 z-[100] flex flex-col px-5 md:px-10 pb-5" style=${{background:"var(--bg)",paddingTop:"calc(1rem + env(safe-area-inset-top,0px))"}}>
+    <div className="flex items-center justify-between gap-4 pb-3">
+      <div>${!hideTitle&&html`<div className="disp text-2xl md:text-4xl">${p.title}</div>`}<div className="text-xs mt-1" style=${{color:"var(--mute)"}}>${label||"Tools: Canva, AI tools"} · ${String(idx+1).padStart(2,"0")} / ${String(list.length).padStart(2,"0")}</div></div>
+      <button onClick=${close} aria-label="Close" className=${btn} style=${{borderColor:"var(--fg)"}}><${Icon} n="x"/></button>
+    </div>
+    <div className="flex-1 min-h-0 flex items-center justify-between gap-3">
+      <button onClick=${()=>go(-1)} aria-label="Previous" className=${btn} style=${{borderColor:"var(--fg)"}}><${Icon} n="left"/></button>
+      <img src=${p.img} alt=${p.title} className="min-w-0 max-w-full max-h-full object-contain" style=${{height:"100%"}}/>
+      <button onClick=${()=>go(1)} aria-label="Next" className=${btn} style=${{borderColor:"var(--fg)"}}><${Icon} n="right"/></button>
+    </div></div>`;
+}
+
+function Experience(){
+  return html`<section id="experience" className="px-5 md:px-10 py-24 max-w-[1400px] mx-auto">
+    <${Reveal}><h2 className="disp mb-14" style=${{fontSize:"clamp(2.5rem,7vw,6rem)"}}>Creative<br/>Experience</h2><//>
+    <div className="border-t" style=${{borderColor:"var(--line)"}}>
+      ${EXPERIENCE.map((e,i)=>html`<${Reveal} key=${e.org} delay=${i*90}><div className="grid md:grid-cols-12 gap-3 md:gap-8 py-8 border-b group" style=${{borderColor:"var(--line)"}}>
+        <span className="md:col-span-3 text-sm" style=${{color:"var(--mute)"}}>${e.when}</span>
+        <div className="md:col-span-5"><h3 className="disp text-3xl md:text-4xl transition-colors group-hover:text-[var(--acc)]">${e.org}</h3><p className="mt-2 text-sm font-medium">${e.role}</p></div>
+        <p className="md:col-span-4 text-sm leading-relaxed" style=${{color:"var(--mute)"}}>${e.text}</p>
+      </div><//>`)}
+    </div></section>`;
+}
+
+function Toolkit(){
+  return html`<section id="toolkit" className="px-5 md:px-10 py-20 max-w-[1400px] mx-auto">
+    <${Reveal}><h2 className="disp mb-10" style=${{fontSize:"clamp(2.5rem,7vw,6rem)"}}>My Creative <span style=${{color:"var(--acc)"}}>Toolkit</span></h2><//>
+    <div className="flex flex-wrap gap-4">${TOOLS.filter(t=>t.confirmed).map((t,i)=>html`<${Reveal} key=${t.name} delay=${i*80}><div className="px-7 py-5 rounded-full border transition hover:bg-[var(--fg)] hover:text-[var(--bg)]" style=${{borderColor:"var(--fg)"}}><div className="disp text-2xl">${t.name}</div><div className="text-xs opacity-70 mt-1">${t.note}</div></div><//>`)}</div>
+  </section>`;
+}
+
+function Services(){
+  return html`<section id="services" className="px-5 md:px-10 py-24 max-w-[1400px] mx-auto">
+    <${Reveal}><h2 className="disp mb-12" style=${{fontSize:"clamp(2.5rem,7vw,6rem)"}}>What I can<br/>do for you</h2><//>
+    <ol className="border-t" style=${{borderColor:"var(--line)"}}>${SERVICES.map((s,i)=>html`<${Reveal} as="li" key=${s}><div className="group flex items-baseline gap-6 py-5 border-b cursor-default transition-all hover:pl-4" style=${{borderColor:"var(--line)"}}>
+      <span className="text-xs w-8" style=${{color:"var(--mute)"}}>${String(i+1).padStart(2,"0")}</span>
+      <span className="disp transition-colors group-hover:text-[var(--acc)]" style=${{fontSize:"clamp(1.8rem,5vw,3.6rem)"}}>${s}</span></div><//>`)}</ol>
+  </section>`;
+}
+
+function Contact(){
+  const L=({href,n,t,ext})=>html`<a href=${href} target=${ext?"_blank":"_self"} rel="noopener noreferrer" className="lnk inline-flex items-center gap-2"><${Icon} n=${n}/>${t}</a>`;
+  return html`<section id="contact" className="px-5 md:px-10 pt-24 pb-10 max-w-[1400px] mx-auto">
+    <${Reveal}><h2 className="disp" style=${{fontSize:"clamp(3rem,11vw,9.5rem)"}}>Have a project<br/><span style=${{color:"var(--acc)"}}>in mind?</span></h2>
+      <p className="mt-6 text-lg">Let's create something meaningful together.</p>
+      <a href=${"mailto:"+SITE.email+"?subject=Project%20enquiry"} className="mt-8 inline-flex items-center gap-2 px-7 py-4 rounded-full text-sm transition hover:opacity-80" style=${{background:"var(--fg)",color:"var(--bg)"}}>Start a conversation <${Icon} n="arrow"/></a>
+      <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4 text-sm"><${L} href=${"mailto:"+SITE.email} n="mail" t=${SITE.email}/><${L} href=${"tel:+91"+SITE.phone} n="phone" t=${"+91 "+SITE.phone}/><${L} href=${SITE.linkedin} n="linkedin" t="LinkedIn" ext=${true}/><${L} href=${SITE.instagram} n="instagram" t="Instagram" ext=${true}/></div><//>
+    <footer className="mt-20 pt-6 border-t flex justify-between text-xs" style=${{borderColor:"var(--line)",color:"var(--mute)"}}><span>© 2026 Pathipati Dakshitha</span><a href="#top" className="lnk">Back to top ↑</a></footer>
+  </section>`;
+}
+
+function App(){
+  const [idx,setIdx]=useState(null);
+  return html`<main><${Nav}/><${Hero}/><${About}/><${Work} onOpen=${setIdx}/>
+    ${idx!==null&&html`<${Lightbox} list=${PROJECTS} idx=${idx} setIdx=${setIdx} hideTitle=${true}/>`}
+    <${Docs}/><${Experience}/><${Toolkit}/><${Services}/><${Contact}/></main>`;
+}
+ReactDOM.createRoot(document.getElementById("root")).render(html`<${App}/>`);
+</script>
+</body>
+</html>
